@@ -14,7 +14,7 @@ const refs = {
   countryInfo: document.querySelector('.country-info'),
 };
 
-let searchValue = '';
+let searcCountry = '';
 
 refs.searchInput.addEventListener(
   'input',
@@ -22,17 +22,17 @@ refs.searchInput.addEventListener(
 );
 
 function onSearchInput(evt) {
-  searchValue = evt.target.value.trim();
+  searcCountry = evt.target.value.trim();
 
-  API(searchValue)
+  API(searcCountry)
     .then(data => {
-      if (data.length >= 10) {
-        onTooManyResults();
-        refs.countryList.textContent = '';
+      if (data.length === 1) {
+        renderSingleCountry(data);
       } else if (data.length >= 2 && data.length <= 10) {
         renderCountryList(data);
-      } else if (data.length === 1) {
-        renderSingleCountry(data);
+      } else {
+        onTooManyResults();
+        refs.countryList.textContent = '';
       }
     })
     .catch(error => {

@@ -3,7 +3,6 @@ export default function fetchCountries(name) {
   const options = '?fields=name,capital,population,flags,languages';
 
   return fetch(`${url}${name}${options}`).then(response => {
-    console.log(response);
     if (!response.ok) {
       throw new Error(response.status);
     }
