@@ -1,12 +1,12 @@
-export default function prewiewMarkup({ flags, name }) {
+function prewiewMarkup({ flags, name }) {
   return `
-      <li class="country-list__item">
-      <img class="country-list__flag" width="30px" height="20px" src="${flags.svg}"></img>
-      <p class="country-list__name">${name.official}</p>
-      </li>`;
+    <li class="country-list__item">
+    <img class="country-list__flag" width="30px" height="20px" src="${flags.svg}"></img>
+    <p class="country-list__name">${name.official}</p>
+    </li>`;
 }
 
-export default function singleCountryMarkup({ flags, name, capital, population, languages }) {
+function singleCountryMarkup({ flags, name, capital, population, languages }) {
   const lang = Object.values(languages).join(', ');
 
   return ` 
@@ -19,3 +19,5 @@ export default function singleCountryMarkup({ flags, name, capital, population, 
     <p class="description__name">Languages: <span>${lang}</span></p>
     </div>`;
 }
+
+export { prewiewMarkup, singleCountryMarkup };
