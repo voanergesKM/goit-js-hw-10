@@ -22,13 +22,12 @@ refs.searchInput.addEventListener(
 );
 
 function onSearchInput(evt) {
-  clearMarkup();
-
   searchCountry = evt.target.value.trim();
 
-  if (!searchCountry) {
+  if (!searchCountry || !evt.data) {
     return;
   } else {
+    clearMarkup();
     API(searchCountry)
       .then(data => {
         if (data.length === 1) {
