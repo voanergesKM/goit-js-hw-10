@@ -37,7 +37,7 @@ function onSearchInput(evt) {
           renderCountryList(data);
         } else {
           onTooManyResults();
-          refs.countryList.textContent = '';
+          clearMarkup();
         }
       })
       .catch(error => {
