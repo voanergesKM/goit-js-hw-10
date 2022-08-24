@@ -22,11 +22,11 @@ refs.searchInput.addEventListener(
 );
 
 function onSearchInput(evt) {
-  searchCountry = evt.target.value.trim();
-
   clearMarkup();
 
-  if (!searchCountry || !evt.data) {
+  searchCountry = evt.target.value.trim();
+
+  if ((!searchCountry && !evt.data) || (!searchCountry && evt.data === ' ')) {
     return;
   } else {
     API(searchCountry)
@@ -37,7 +37,6 @@ function onSearchInput(evt) {
           renderCountryList(data);
         } else {
           onTooManyResults();
-          clearMarkup();
         }
       })
       .catch(error => {
